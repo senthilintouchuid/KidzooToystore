@@ -64,7 +64,7 @@ public class ToyServiceImplTest {
 
 	@Test
 	public void getToysBasedOnPriceRangeFromTest() {
-		Mockito.when(toyRepository.findAll()).thenReturn(toyListRepo);
+		Mockito.when(toyRepository.findByPriceGreaterThanEqual(Mockito.any())).thenReturn(toyListRepo);
 		Mockito.when(stockCheckerService.getToysAvailabilityStatus()).thenReturn(avalabilityStatus);
 		Mockito.when(stockCheckerService.filterAvailableToys(Mockito.anyList(), Mockito.anyList())).thenReturn(toyListBean);
 
@@ -74,12 +74,23 @@ public class ToyServiceImplTest {
 
 	@Test
 	public void getToysBasedOnPriceRange() {
-		Mockito.when(toyRepository.findAll()).thenReturn(toyListRepo);
+		Mockito.when(toyRepository.findByPriceBetween(Mockito.any(), Mockito.any())).thenReturn(toyListRepo);
 		Mockito.when(stockCheckerService.getToysAvailabilityStatus()).thenReturn(avalabilityStatus);
 		Mockito.when(stockCheckerService.filterAvailableToys(Mockito.anyList(), Mockito.anyList())).thenReturn(toyListBean);
 
 		List<Toy> toyList = toyService.getToysBasedOnPriceRange(BigDecimal.valueOf(500.00),BigDecimal.valueOf(1600.00));
 		Assertions.assertEquals(3, toyList.size());
+	}
+	
+	
+	@Test
+	public void getToysBasedOnPriceRangeNoRecord() {
+		Mockito.when(toyRepository.findByPriceBetween(Mockito.any(), Mockito.any())).thenReturn(new ArrayList<>());
+		Mockito.when(stockCheckerService.getToysAvailabilityStatus()).thenReturn(avalabilityStatus);
+		Mockito.when(stockCheckerService.filterAvailableToys(Mockito.anyList(), Mockito.anyList())).thenReturn(toyListBean);
+
+		List<Toy> toyList = toyService.getToysBasedOnPriceRange(BigDecimal.valueOf(500.00),BigDecimal.valueOf(1600.00));
+		Assertions.assertEquals(0, toyList.size());
 	}
 
 }
