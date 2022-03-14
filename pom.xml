@@ -13,7 +13,7 @@
 
 	<groupId>com.kidzoo</groupId>
 	<artifactId>KidZoo</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>KidZoo</name>
 	<description>eCommerce backend server for Kidzoo</description>
 

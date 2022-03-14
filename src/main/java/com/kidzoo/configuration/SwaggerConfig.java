@@ -15,7 +15,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class SwaggerConfig {
 
-	// Swagger URL: http://localhost:8080/swagger-ui/index.html
+	// Swagger URL: http://localhost:8080/kidzoo/swagger-ui/index.html
 
 	@Bean
 	public Docket api() {
@@ -29,8 +29,8 @@ public class SwaggerConfig {
 		return new ApiInfoBuilder().title("Swagger Kidzoo Toy Store Service")
 				.description("This is Kidzoo Toy Store Service")
 				.version("1.0.0")
-				.license("Apache 2.0")
-				.licenseUrl("http://www.apache.org/licenses/LICENSE-2.0.html")
+				.license("Contact storeteam@kidzoo.com")
+				.licenseUrl("http://kidzoo.store.com/licenses/LICENSE-2.0.html")
 				.contact(new Contact("Kidzoo Toy Store Service", "kidzoo.store.com", "storeteam@kidzoo.com"))
 				.build();
 	}

@@ -20,10 +20,12 @@ import com.kidzoo.bean.Toy;
 import com.kidzoo.service.ToyService;
 import com.kidzoo.util.KidZooRestUtil;
 
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
+@Api(value = "Toy Store Controller", description = "REST API for Kidzoo Toy Store")
 @RestController
-@RequestMapping(value = "kidzoo/v1/api")
+@RequestMapping(value = "v1/api")
 public class ToyListController {
 
 	@Autowired
